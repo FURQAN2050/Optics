@@ -11,7 +11,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-
+import {OrderComponent} from '../../order/order.component'
 import {
   MatButtonModule,
   MatInputModule,
@@ -37,6 +37,7 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    OrderComponent,
   ]
 })
 
