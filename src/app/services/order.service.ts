@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 export class OrderService {
 
   constructor(private http:Http,) { }
-  public delete(id){   
+  public deleteOrder(id){   
     //console.log('in delete pant method');
     let myParams = new URLSearchParams();
     myParams.append('_id', id);
@@ -31,13 +31,12 @@ getOne(id){
   .map((res: Response) => res.json())  
 } 
 update(form){
-  this.http.put('http://localhost:3000/api/order', form)
+  return this.http.put('http://localhost:3000/api/order', form)
   .map(files =>files.json())
 
 } 
-post(form){
-
-  this.http.post('http://localhost:3000/api/order', form)
+postOrder(form){
+  return this.http.post('http://localhost:3000/api/order', form)
   .map(files =>files.json())
 } 
 

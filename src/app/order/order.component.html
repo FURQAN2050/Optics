@@ -5,60 +5,60 @@
               <div class="card">
                   <div class="card-header card-header-danger">
                       <h4 class="card-title">Place Your Order</h4>
-                      <p class="card-category">Complete your profile</p>
+                      <p class="card-category">Enter customers Data</p>
                   </div>
                   <div class="card-body">
-                      <form>
+                      <form ngNativeValidate #Data="ngForm" (ngSubmit)="buyNow(Data)"> 
                           <div class="row">
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Name">
+                                    <input required  matInput placeholder="Name" name="name"  [(ngModel)]="name">
                                   </mat-form-field>
                               </div>
                               <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Contact No." type="number">
+                                    <input required  matInput placeholder="Contact No."  name="contact" type="number" [(ngModel)]="contact">
                                   </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Delivery Date" type="date">
+                                    <input required  matInput placeholder="Delivery Date"  name="deliveryDate" type="date" [(ngModel)]="deliveryDate">
                                   </mat-form-field>
                               </div>
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="B.Date" type="date">
+                                  <input required  matInput placeholder="Order Date"  name="orderDate" type="text" [(ngModel)]="orderDate">
                                 </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                             <div class="col-md-6">
-                                <label>About Me</label>
+                                <label>Particulars</label>
                                 <mat-form-field class="example-full-width">
-                                   <textarea rows="5" matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                   <textarea rows="5" matInput name="description"  placeholder="Add the particulars Here" [(ngModel)]="description"></textarea>
                                  </mat-form-field>
                             </div>
                             <div class="col-md-6">
                               <div class="row">
                                   <div class="col-md-12">
                                       <mat-form-field class="example-full-width">
-                                          <input matInput placeholder="Total" type="text">
+                                          <input required  matInput placeholder="Total" name="total" type="number"  [(ngModel)]="total">
                                       </mat-form-field>    
                                   </div>
                               </div>
                               <div class="row">
                                   <div class="col-md-12">
                                       <mat-form-field class="example-full-width">
-                                          <input matInput placeholder="Advance" type="text">
+                                          <input required  matInput placeholder="Advance"  name="advance" type="number" [(ngModel)]="advance">
                                       </mat-form-field>
                                   </div>
                               </div>
-                              <div class="row">
+                              <div class="row" *ngIf="(total!='' && advance!='')">
                                   <div class="col-md-12">
                                       <mat-form-field class="example-full-width">
-                                          <input matInput placeholder="Balance" type="text">
+                                          <input required  matInput placeholder="Balance"  name="balance" type="number"  [(ngModel)]="total-advance">
                                       </mat-form-field>
                                   </div>
                               </div>
@@ -87,7 +87,7 @@
                               </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <label>Left</label>
+                                    <label>Right</label>
                                     <div class="col-md-3">
                                       <mat-form-field class="example-full-width">
                                         <input matInput placeholder="SPH" type="text">
@@ -107,12 +107,66 @@
                             </div>
                           
                           </div>
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right btn-round">Update Profile</button>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right btn-round"> Save</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
               </div>
           </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3">
+                <form class="navbar-form">
+                        <div class="input-group no-border">
+                            <input type="text" value="" class="form-control" placeholder="Search Customer...">
+                            <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </form>
+
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+                <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Customer Details</h4>
+                            <p class="card-category"> You can find the Cutomer Details</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>Name</th>
+                                        <th>Contact</th>
+                                        <th>Order.Date</th>
+                                        <th>Delivery Date</th>
+                                        <th>Total</th>
+                                        <th>Advance</th>
+                                        <th>balance</th>
+                                        <th>Delete</th>
+                                    </thead>
+                                    <tbody *ngFor="let order of Orders">
+                                        <tr>
+                                            <td> {{order.name}}</td>
+                                            <td> {{order.contact}}</td>
+                                            <td> {{order.orderDate}}</td>
+                                            <td> {{order.deliveryDate}}</td>
+                                            <td> {{order.total}}</td>
+                                            <td> {{order.advance}}</td>
+                                            <td> {{order.balance}}</td>
+                                            <td><button mat-raised-button type="submit" class="btn btn-danger pull-right btn-round" (click)="deleteEntry(order)"> Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+          </div>
+
       </div>
   </div>
 </div>
