@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-
-  constructor() { }
+  balance:any;
+  advcance:any;
+  total:any;
+  constructor() {
+   }
 
   ngOnInit() {
+    this.balance=this.total-this.advcance;
   }
 
 }
