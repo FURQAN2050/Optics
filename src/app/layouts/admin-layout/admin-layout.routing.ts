@@ -8,7 +8,9 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import {OrderComponent} from '../../order/order.component'
+import {OrderComponent} from '../../order/order.component';
+import {LoginComponent} from '../../login/login.component';
+import { Component } from '@angular/core';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -61,5 +63,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
-    { path: 'order',        component: OrderComponent },
+    { path: 'order',          component: OrderComponent },
+    { path: 'login',           component: LoginComponent },
 ];
